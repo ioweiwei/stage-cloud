@@ -30,9 +30,11 @@
 |		|	
 |		|—————stage-server	（原生组件）
 |		|			|
-|		|			|——————server-seata	分布式事务
+|		|			|——————server-seata	    分布式事务
 |		|			|
 |		|			|——————server-eureka	注册中心
+|       |           |
+|       |           |------server-admin     监控中心
 |		|
 |		|
 ```
