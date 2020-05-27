@@ -19,6 +19,7 @@
     <modules>
         <module>server-eureka</module>
         <module>server-seata</module>
+        <module>server-admin</module>
     </modules>
 
 

@@ -1,5 +1,7 @@
 package io.xiaowei.core;
 
+import io.xiaowei.core.request.PageRequest;
+import io.xiaowei.core.utils.page.SimplePage;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Resource;
@@ -20,6 +22,12 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     private BaseJpaRepository<T> baseJpaRepository;
 
     @Override
+    public abstract List<T> findAll(PageRequest request);
+
+    @Override
+    public abstract SimplePage<T> findPage(PageRequest request);
+
+    @Override
     public List<T> findAll() {
         return baseJpaRepository.findAll();
     }
@@ -27,10 +35,7 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
     @Override
     public T findById(Long id) {
         Optional<T> optional = baseJpaRepository.findById(id);
-        if (!optional.isPresent()) {
-            throw new RuntimeException("结果不存在");
-        }
-        return optional.get();
+        return optional.orElse(null);
     }
 
     @Override
